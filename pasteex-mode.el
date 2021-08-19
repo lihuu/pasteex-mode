@@ -123,7 +123,7 @@
   ;; build image file name (use `pasteex_screenshot' as prefix, following buffer name, following datetime string)
   (setq img-file-name (format "pasteex_screenshot_%s_%s.png" (file-name-base (buffer-file-name)) (format-time-string "%Y%m%d%H%M%S")))
   ;; save image file to img-dir by invoking pasteex executable command
-  (shell-command (format "%s -q %s %s" pasteex-executable-path img-dir img-file-name))
+  (shell-command (format "%s -q -f %s" pasteex-executable-path (concat img-dir img-file-name)))
   (setq relative-img-file-path (concat "./img/" img-file-name))
   ;; check is png file or not
   (unless (pasteex-is-png-file relative-img-file-path)
